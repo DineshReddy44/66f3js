@@ -4,31 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration Form</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            color: #203330;
+            background: #e8f1ec;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 32px 16px;
+            background: linear-gradient(135deg, #e8f1ec 0%, #f6f0e5 100%);
+        }
+
+        main {
+            width: min(100%, 560px);
+            padding: clamp(24px, 6vw, 48px);
+            background: #fffefa;
+            border: 1px solid #d5e0d9;
+            border-radius: 8px;
+            box-shadow: 0 18px 50px #28493b17;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: #174b3e;
+        }
+
+        .intro {
+            margin: 0 0 28px;
+            color: #586b64;
+            line-height: 1.5;
+        }
+
+        .fields {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px 16px;
+        }
+
+        .field {
+            display: grid;
+            gap: 7px;
+        }
+
+        .field.wide {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        input {
+            width: 100%;
+            min-height: 46px;
+            padding: 10px 12px;
+            border: 1px solid #b9c9c0;
+            border-radius: 4px;
+            background: #fff;
+            color: inherit;
+            font: inherit;
+        }
+
+        input:focus-visible {
+            outline: 3px solid #16836d55;
+            border-color: #16836d;
+        }
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 22px 0;
+            color: #465b53;
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+
+        .terms input {
+            width: 18px;
+            min-height: 18px;
+            margin: 2px 0 0;
+            accent-color: #176b58;
+        }
+
+        button {
+            width: 100%;
+            min-height: 48px;
+            border: 0;
+            border-radius: 4px;
+            background: #176b58;
+            color: white;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #105544;
+        }
+
+        button:focus-visible {
+            outline: 3px solid #16836d77;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 480px) {
+            .fields {
+                grid-template-columns: 1fr;
+            }
+
+            .field.wide {
+                grid-column: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h2>User Registration Form</h2>
+    <main>
+        <h1>Create your account</h1>
+        <p class="intro">Enter your details to get started.</p>
 
-    <form>
-        <label>Name:</label><br>
-        <input type="text" name="name" required>
-        <br><br>
+        <form action="#" method="post">
+            <div class="fields">
+                <div class="field">
+                    <label for="full-name">Full name</label>
+                    <input id="full-name" name="fullName" type="text" autocomplete="name" required>
+                </div>
 
-        <label>Date of Birth:</label><br>
-        <input type="date" name="dob" required>
-        <br><br>
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" type="text" autocomplete="username" minlength="3" required>
+                </div>
 
-        <label>Email:</label><br>
-        <input type="email" name="email" required>
-        <br><br>
+                <div class="field wide">
+                    <label for="email">Email address</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required>
+                </div>
 
-        <label>Phone Number:</label><br>
-        <input type="tel" name="phone" required>
-        <br><br>
+                <div class="field">
+                    <label for="phone">Phone number</label>
+                    <input id="phone" name="phone" type="tel" autocomplete="tel">
+                </div>
 
-        <button type="submit">Submit</button>
+                <div class="field">
+                    <label for="birth-date">Date of birth</label>
+                    <input id="birth-date" name="birthDate" type="date" autocomplete="bday">
+                </div>
 
-    </form>
+                <div class="field wide">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+                </div>
+            </div>
 
+            <label class="terms" for="terms">
+                <input id="terms" name="terms" type="checkbox" required>
+                <span>I agree to the terms and conditions.</span>
+            </label>
 
+            <button type="submit">Create account</button>
+        </form>
+    </main>
 </body>
 </html>
